@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tengine.cpp">
+    <ClCompile Include="src\tengine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.c">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tengine.hpp">
+    <ClInclude Include="src\tengine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

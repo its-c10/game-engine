@@ -134,11 +134,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.c" />
-    <ClCompile Include="tengine.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\tengine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tengine.hpp" />
+    <ClInclude Include="src\tengine.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
