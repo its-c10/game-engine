@@ -134,10 +134,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\game_object\game_object.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\tengine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\game_object\game_object.hpp" />
     <ClInclude Include="src\tengine.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
