@@ -29,13 +29,31 @@ bool init_window() {
 	}
 }
 
-void render() {
-
-}
-
 void setup() {
+	init_window();
+}
+
+void render() {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Set draw color
+	SDL_RenderClear(renderer); // Clear render context
+
+	// Render things into back buffer before swap.
+	SDL_Rect rect = { 10, 10, 30, 30 };
+
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	SDL_RenderFillRect(renderer, &rect);
+
+	/*
+		renders via double buffer
+		front buffer contains things that you see
+		back buffer contains things that we need to render in next frame
+		it swaps front and back buffer repeatedly.
+	*/
+	SDL_RenderPresent(renderer); // The buffer swap
 
 }
+
+
 
 void update() {
 
@@ -68,6 +86,7 @@ void shutdown() {
 int main(int argc, char *args[]){
 
 	is_running = init_window();
+	setup();
 	while (is_running) {
 		process_input();
 		update();
