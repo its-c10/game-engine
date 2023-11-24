@@ -1,5 +1,5 @@
 #include <iostream>
-#include "game_object.hpp";
+#include "game_object.hpp"
 
 double GameObject::getY() {
 	return y;
@@ -9,8 +9,10 @@ double GameObject::getX() {
 	return x;
 }
 
-bool GameObject::should_render() {
-	return should_render;
+void GameObject::render() {
+	
 }
 
-
+bool GameObject::get_should_render() {
+	return true;
+}

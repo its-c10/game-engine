@@ -1,11 +1,16 @@
 #include <SDL.h>
 class Tengine {
+	bool running;
+	SDL_Window* window;
+	SDL_Renderer* renderer;
 	public:
-		int setup();
+		void setup();
 		void update();
 		void render();
 		void process_input();
-	private:
-		SDL_Window *window;
-		SDL_Renderer* renderer;
+		void shutdown();
+		bool is_running();
+		SDL_Window* getWindow();
+		SDL_Renderer* getRenderer();
+		Tengine();
 };
