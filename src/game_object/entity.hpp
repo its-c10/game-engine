@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
-class GameObject {
+class Entity {
 	double x, y;
-	bool should_render;
+	bool render;
 	std::string identitifer;
 	public:
 		double getX();
 		double getY();
-		bool get_should_render();
+		bool should_render();
 		void render();
 };

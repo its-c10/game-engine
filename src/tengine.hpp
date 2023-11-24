@@ -3,6 +3,8 @@ class Tengine {
 	bool running;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
+	double last_time;
+	int fps;
 	public:
 		void setup();
 		void update();

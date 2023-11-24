@@ -2,12 +2,18 @@
 #include "tengine.hpp"
 #include "constants.h"
 #include <SDL.h>
+#include <chrono>
 
 bool Tengine::is_running() { return running; }
 
 SDL_Window* Tengine::getWindow() { return window; }
 
 SDL_Renderer* Tengine::getRenderer() { return renderer; }
+
+uint64_t time_in_millis() {
+	using namespace std::chrono;
+	return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+}
 
 void Tengine::setup() {
 
@@ -36,10 +42,16 @@ void Tengine::setup() {
 
 Tengine::Tengine() {
 	setup();
+	last_time = -1;
 }
 
 void Tengine::update() {
+	int delta_time = 1;
+	if (last_time != -1) {
+		int ms = time_in_millis();
+		delta_time = ms - last_time;
 
+	}
 }
 
 void Tengine::render() {
