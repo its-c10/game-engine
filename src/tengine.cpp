@@ -4,6 +4,8 @@
 #include <SDL.h>
 #include <chrono>
 
+float y, x;
+
 bool Tengine::is_running() { return running; }
 
 SDL_Window* Tengine::getWindow() { return window; }
@@ -18,40 +20,55 @@ uint64_t time_in_millis() {
 void Tengine::setup() {
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-		std::cout << "SDL failed to initialize. Error code: " << SDL_GetError();
+		std::cout << "SDL failed to initialize. Error code: " << SDL_GetError() << "\n";
 		return;
 	}
 
 	window = SDL_CreateWindow("Tengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
 
 	if (!window) {
-		std::cout << "SDL window failed to initialize. Eror code: " << SDL_GetError();
+		std::cout << "SDL window failed to initialize. Eror code: " << SDL_GetError() << "\n";
 		return;
 	}
+	std::cout << "Window initialized!\n";
 
 	/* -1 = default display driver */
 	renderer = SDL_CreateRenderer(window, -1, 0);
 	if (!renderer) {
-		std::cout << "SDL renderer failed to initialize. Error code: " << SDL_GetError();
+		std::cout << "SDL renderer failed to initialize. Error code: " << SDL_GetError() << "\n";
 		return;
 	}
+	std::cout << "Renderer initialized!\n";
 
 	running = true;
+	std::cout << "Setup complete!\n";
 
 }
 
 Tengine::Tengine() {
 	setup();
-	last_time = -1;
+	last_time = SDL_GetTicks64();
+	x = 100;
+	y = 100;
 }
 
 void Tengine::update() {
-	int delta_time = 1;
-	if (last_time != -1) {
-		int ms = time_in_millis();
-		delta_time = ms - last_time;
 
-	}
+	// Delay the execution until we reach the target frame time in ms
+	//int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - last_time);
+
+	// Delay if we are too fast to process this frame.
+	//if (time_to_wait > 0 && time_to_wait <= FRAME_TARGET_TIME) {
+	//	SDL_Delay(time_to_wait);
+	//}
+
+	float delta_time = (SDL_GetTicks() - last_time) / 1000.0f; // Amount of time elapsed since last frame.
+	x += (70.0f * delta_time); // move rectangle a certain amount of pixels per seconds.
+	y += (20.0f * delta_time);
+	//std::cout << "y: " << y << "\n";
+	//std::cout << "x: " << x << "\n";
+	last_time = SDL_GetTicks64(); // time in ms
+
 }
 
 void Tengine::render() {
@@ -59,10 +76,10 @@ void Tengine::render() {
 	SDL_RenderClear(renderer); // Clear render context
 
 	// Render things into back buffer before swap.
-	SDL_Rect rect = { 10, 10, 30, 30 };
+	SDL_Rect r = { x, y, 30, 30 };
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	SDL_RenderFillRect(renderer, &rect);
+	SDL_RenderFillRect(renderer, &r);
 
 	/*
 		renders via double buffer
