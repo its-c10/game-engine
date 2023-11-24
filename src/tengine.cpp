@@ -3,42 +3,34 @@
 #include "constants.h"
 #include <SDL.h>
 
-bool Tengine::is_running() {
-	return running;
-}
+bool Tengine::is_running() { return running; }
 
-SDL_Window* Tengine::getWindow()
-{
-	return window;
-}
+SDL_Window* Tengine::getWindow() { return window; }
 
-SDL_Renderer* Tengine::getRenderer()
-{
-	return renderer;
-}
+SDL_Renderer* Tengine::getRenderer() { return renderer; }
 
 void Tengine::setup() {
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-		std::cout << "SDL failed to initialize. Erro code: " << SDL_GetError();
+		std::cout << "SDL failed to initialize. Error code: " << SDL_GetError();
 		return;
 	}
 
-	Tengine::window = SDL_CreateWindow("Tengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+	window = SDL_CreateWindow("Tengine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
 
-	if (!Tengine::window) {
+	if (!window) {
 		std::cout << "SDL window failed to initialize. Eror code: " << SDL_GetError();
 		return;
 	}
 
 	/* -1 = default display driver */
-	Tengine::renderer = SDL_CreateRenderer(window, -1, 0);
+	renderer = SDL_CreateRenderer(window, -1, 0);
 	if (!renderer) {
 		std::cout << "SDL renderer failed to initialize. Error code: " << SDL_GetError();
 		return;
 	}
 
-	Tengine::running = true;
+	running = true;
 
 }
 
@@ -75,11 +67,11 @@ void Tengine::process_input() {
 
 	switch (event.type) {
 	case SDL_QUIT:
-		Tengine::running = false;
+		running = false;
 		break;
 	case SDL_KEYDOWN:
 		if (event.key.keysym.sym == SDLK_ESCAPE) {
-			Tengine::running = false;
+			running = false;
 		}
 		break;
 
