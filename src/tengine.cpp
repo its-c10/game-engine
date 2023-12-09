@@ -6,6 +6,8 @@
 
 float y, x;
 
+FPS_Tracker Tengine::getFPSTracker() { return fps_tracker; };
+
 bool Tengine::is_running() { return running; }
 
 SDL_Window* Tengine::getWindow() { return window; }
@@ -19,7 +21,7 @@ uint64_t time_in_millis() {
 
 void Tengine::setup() {
 
-	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		std::cout << "SDL failed to initialize. Error code: " << SDL_GetError() << "\n";
 		return;
 	}
@@ -48,6 +50,7 @@ void Tengine::setup() {
 Tengine::Tengine() {
 	setup();
 	last_time = SDL_GetTicks64();
+	fps_tracker = FPS_Tracker();
 	x = 100;
 	y = 100;
 }
@@ -55,10 +58,10 @@ Tengine::Tengine() {
 void Tengine::update() {
 
 	// Delay the execution until we reach the target frame time in ms
-	//int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - last_time);
+	//int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - last_time); // UNCOMMENT THIS TO CAP FRAMES
 
 	// Delay if we are too fast to process this frame.
-	//if (time_to_wait > 0 && time_to_wait <= FRAME_TARGET_TIME) {
+	//if (time_to_wait > 0 && time_to_wait <= FRAME_TARGET_TIME) { // UNCOMMENT THIS TO CAP FRAMES
 	//	SDL_Delay(time_to_wait);
 	//}
 
@@ -72,21 +75,16 @@ void Tengine::update() {
 }
 
 void Tengine::render() {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // Set draw color
 	SDL_RenderClear(renderer); // Clear render context
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // Background window color
+	/* RENDER BELOW */
 
-	// Render things into back buffer before swap.
-	SDL_Rect r = { x, y, 30, 30 };
 
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	SDL_RenderFillRect(renderer, &r);
+	// Rectangle will be rendered in this color.
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-	/*
-		renders via double buffer
-		front buffer contains things that you see
-		back buffer contains things that we need to render in next frame
-		it swaps front and back buffer repeatedly.
-	*/
+	/* RENDER ABOVE */
+	// front buffer contains things that you see renders via double buffer back buffer contains things that we need to render in next frameit swaps front and back buffer repeatedly.
 	SDL_RenderPresent(renderer); // The buffer swap
 }
 
