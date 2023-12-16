@@ -1,0 +1,2 @@
+struct Entity;
+struct Transform;

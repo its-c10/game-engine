@@ -19,7 +19,7 @@ uint64_t time_in_millis() {
 	return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 
-void Tengine::setup() {
+void Tengine::setup() {W
 
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 		std::cout << "SDL failed to initialize. Error code: " << SDL_GetError() << "\n";
