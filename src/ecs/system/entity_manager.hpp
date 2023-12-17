@@ -1,7 +1,7 @@
 #include <iostream>
 #include <queue>
-#include "../ecs.hpp"
-#include "../constants.h";
+#include "../ecs.hpp";
+#include "../../constants.h";
 class EntityManager {
 	std::queue<Entity> availableEntityIds;
 	std::vector<Signature> signatures;

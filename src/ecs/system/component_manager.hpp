@@ -1,0 +1,3 @@
+class ComponentManager {
+	int numRegistered;
+};

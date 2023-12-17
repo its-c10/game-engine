@@ -1,5 +1,5 @@
 #include "./entity_manager.hpp";
-#include "../constants.h";
+#include "../../constants.h";
 #include <cassert>
 
 EntityManager::EntityManager() {
