@@ -23,17 +23,6 @@ void EntityManager::destroyEntity(Entity entity) {
 
 	availableEntityIds.push(entity);
 
-	signatures[entity].reset();
 	entityCount--;
 
 }
-
-void EntityManager::setSignature(Entity entity, Signature signature) {
-	assert(entity <= 0 || entity >= availableEntityIds.size(), "Not a valid entity ID!");
-	signatures[entity] = signature;
-}
-
-Signature EntityManager::getSignature(Entity entity) {
-	assert(entity <= 0 || entity >= availableEntityIds.size(), "Not a valid entity ID!");
-	return signatures[entity];
-} 
