@@ -1,3 +1,3 @@
 class ComponentManager {
-	int numRegistered;
+	void register();
 };

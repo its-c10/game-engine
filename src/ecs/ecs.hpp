@@ -2,15 +2,19 @@
 #include "../constants.h";
 #include "./component/transform.hpp";
 #include "./component/sprite.hpp";
+#include "./entity.hpp";
+#include <queue>
 #include <unordered_map>
 
-// entity id that can be unsigned 32 bit integer.
-using Entity = std::uint32_t;
-
 class ECSManager {
-	// Components
-	std::unordered_map<Entity, Transform> transforms;
-	std::unordered_map<Entity, Sprite> sprites;
-	//Systems
-	
+	std::vector<Entity<IComponent>> entities;
+	std::queue<EntityID> availableIDs;
+	public:
+		ECSManager();
+		std::shared_ptr<Entity<IComponent>> createEntity();
+		void destroyEntity(EntityID id);
+	private:
+		EntityID getEntityId();
+		void populateIdQueue();
 };
+

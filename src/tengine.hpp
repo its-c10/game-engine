@@ -1,19 +1,21 @@
 #include <SDL.h>
-#include "fps_tracker.hpp"
+#include "fps_tracker.hpp";
+#include "./ecs/ecs.hpp";
 class Tengine {
-	bool running;
+	FPS_Tracker fpsTracker;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
-	double last_time;
+	std::shared_ptr<ECSManager> ecsManager;
+	double lastTime;
 	int fps;
-	FPS_Tracker fps_tracker;
+	bool running;
 	public:
 		void setup();
 		void update();
 		void render();
-		void process_input();
+		void processInput();
 		void shutdown();
-		bool is_running();
+		bool isRunning();
 		SDL_Window* getWindow();
 		SDL_Renderer* getRenderer();
 		FPS_Tracker getFPSTracker();

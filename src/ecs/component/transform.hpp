@@ -1,5 +1,7 @@
 #include "../../math/vec2.hpp";
-struct Transform {
+#include "./i_component.hpp";
+struct Transform : IComponent {
 	Vec2 position; // origin
 	Vec2 rotation; // basis
+	ComponentType type() { return 0; }
 };

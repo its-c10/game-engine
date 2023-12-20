@@ -6,9 +6,9 @@
 
 float y, x;
 
-FPS_Tracker Tengine::getFPSTracker() { return fps_tracker; };
+FPS_Tracker Tengine::getFPSTracker() { return fpsTracker; };
 
-bool Tengine::is_running() { return running; }
+bool Tengine::isRunning() { return running; }
 
 SDL_Window* Tengine::getWindow() { return window; }
 
@@ -49,8 +49,9 @@ void Tengine::setup() {
 
 Tengine::Tengine() {
 	setup();
-	last_time = SDL_GetTicks64();
-	fps_tracker = FPS_Tracker();
+	lastTime = SDL_GetTicks64();
+	fpsTracker = FPS_Tracker();
+	ecsManager = std::make_shared<ECSManager>();
 	x = 100;
 	y = 100;
 }
@@ -65,12 +66,12 @@ void Tengine::update() {
 	//	SDL_Delay(time_to_wait);
 	//}
 
-	float delta_time = (SDL_GetTicks() - last_time) / 1000.0f; // Amount of time elapsed since last frame.
+	float delta_time = (SDL_GetTicks() - lastTime) / 1000.0f; // Amount of time elapsed since last frame.
 	x += (70.0f * delta_time); // move rectangle a certain amount of pixels per seconds.
 	y += (20.0f * delta_time);
 	//std::cout << "y: " << y << "\n";
 	//std::cout << "x: " << x << "\n";
-	last_time = SDL_GetTicks64(); // time in ms
+	lastTime = SDL_GetTicks64(); // time in ms
 
 }
 
@@ -88,7 +89,7 @@ void Tengine::render() {
 	SDL_RenderPresent(renderer); // The buffer swap
 }
 
-void Tengine::process_input() {
+void Tengine::processInput() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
 
