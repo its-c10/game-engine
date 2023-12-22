@@ -16,6 +16,17 @@ void Entity<IComponent>::removeComponent(ComponentType type) {
 
 }
 
+std::shared_ptr<IComponent> Entity<IComponent>::getComponent(ComponentType type)
+{
+	return this->components[type];
+}
+
+template<typename IComponent>
+bool Entity<IComponent>::hasComponent(ComponentType type)
+{
+	return this->components[type] != NULL;
+}
+
 EntityID Entity<IComponent>::getId() {
 	return this->id;
 }

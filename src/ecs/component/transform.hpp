@@ -6,7 +6,9 @@
 struct Transform : IComponent {
 	Vec2 position; // origin
 	Vec2 rotation; // basis
-	ComponentType type() { return 0; }
+	ComponentType type() {
+		return TRANSFORM;
+	}
 };
 
 #endif

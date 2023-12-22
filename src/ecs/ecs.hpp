@@ -7,13 +7,15 @@
 #include <unordered_map>
 #include <memory>
 
+using EntitySPtr = std::shared_ptr<Entity<IComponent>>;
 class ECSManager {
-	std::vector<Entity<IComponent>> entities;
+	std::vector<EntitySPtr> entities;
 	std::queue<EntityID> availableIDs;
 	public:
 		ECSManager();
-		std::shared_ptr<Entity<IComponent>> createEntity();
+		EntitySPtr createEntity();
 		void destroyEntity(EntityID id);
+		void tickSystems();
 	private:
 		EntityID getEntityId();
 		void populateIdQueue();

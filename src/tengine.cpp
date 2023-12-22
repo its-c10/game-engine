@@ -49,10 +49,11 @@ void Tengine::setup() {
 }
 
 Tengine::Tengine() {
+
 	setup();
 	lastTime = SDL_GetTicks64();
 	fpsTracker = FPS_Tracker();
-	ecsManager = std::make_shared<ECSManager>();
+	ecsManager = std::make_unique<ECSManager>();
 	x = 100;
 	y = 100;
 
@@ -61,7 +62,7 @@ Tengine::Tengine() {
 	Vec2 vec = Vec2(10, 10);
 	transform->position = vec;
 	entity->addComponent(transform);
-
+	
 }
 
 void Tengine::update() {
@@ -80,6 +81,7 @@ void Tengine::update() {
 	//std::cout << "y: " << y << "\n";
 	//std::cout << "x: " << x << "\n";
 	lastTime = SDL_GetTicks64(); // time in ms
+	ecsManager->tickSystems();
 
 }
 
@@ -100,7 +102,6 @@ void Tengine::render() {
 void Tengine::processInput() {
 	SDL_Event event;
 	SDL_PollEvent(&event);
-
 	switch (event.type) {
 	case SDL_QUIT:
 		running = false;

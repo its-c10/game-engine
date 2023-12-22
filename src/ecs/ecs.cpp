@@ -1,10 +1,6 @@
 #include "./ecs.hpp"
 #include <memory>
 
-ECSManager::ECSManager() {
-	this->populateIdQueue();
-}
-
 void ECSManager::populateIdQueue() {
 	for (int i = 0; i < MAX_ENTITIES; ++i) {
 		this->availableIDs.push(i);
@@ -17,12 +13,23 @@ EntityID ECSManager::getEntityId() {
 	return id;
 }
 
-std::shared_ptr<Entity<IComponent>> ECSManager::createEntity() {
+ECSManager::ECSManager()
+{
+	this->populateIdQueue();
+}
+
+EntitySPtr ECSManager::createEntity() {
 	EntityID id = this->getEntityId();
-	std::shared_ptr<Entity<IComponent>> entity = std::make_shared<Entity<IComponent>>(id);
+	EntitySPtr entity = std::make_shared<Entity<IComponent>>(id);
+	entities.push_back(entity);
 	return entity;
 }
 
 void ECSManager::destroyEntity(EntityID id)
 {
+}
+
+void ECSManager::tickSystems()
+{
+	
 }

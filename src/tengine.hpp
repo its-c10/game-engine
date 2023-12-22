@@ -5,7 +5,7 @@ class Tengine {
 	FPS_Tracker fpsTracker;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
-	std::shared_ptr<ECSManager> ecsManager;
+	std::unique_ptr<ECSManager> ecsManager;
 	double lastTime;
 	int fps;
 	bool running;
