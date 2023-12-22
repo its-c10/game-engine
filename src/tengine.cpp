@@ -3,6 +3,7 @@
 #include "constants.h"
 #include <SDL.h>
 #include <chrono>
+#include "./ecs/component/transform.hpp";
 
 float y, x;
 
@@ -54,6 +55,13 @@ Tengine::Tengine() {
 	ecsManager = std::make_shared<ECSManager>();
 	x = 100;
 	y = 100;
+
+	std::shared_ptr<Entity<IComponent>> entity = ecsManager->createEntity();
+	std::shared_ptr<Transform> transform = std::make_shared<Transform>();
+	Vec2 vec = Vec2(10, 10);
+	transform->position = vec;
+	entity->addComponent(transform);
+
 }
 
 void Tengine::update() {

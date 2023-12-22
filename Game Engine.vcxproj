@@ -134,15 +134,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\component\component.cpp" />
-    <ClCompile Include="src\component\location.cpp" />
-    <ClCompile Include="src\component\location.hpp" />
+    <ClCompile Include="src\ecs\ecs.cpp" />
+    <ClCompile Include="src\ecs\entity.cpp" />
     <ClCompile Include="src\fps_tracker.cpp" />
     <ClCompile Include="src\fps_tracker.hpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\tengine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ecs\component\i_component.hpp" />
+    <ClInclude Include="src\ecs\entity.hpp" />
     <ClInclude Include="src\tengine.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

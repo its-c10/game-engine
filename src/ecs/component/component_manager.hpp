@@ -1,3 +1,0 @@
-class ComponentManager {
-	void register();
-};

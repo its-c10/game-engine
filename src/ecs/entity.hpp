@@ -2,16 +2,17 @@
 #include "../constants.h";
 #include <vector>
 #include <array>
+#include<memory>
 
 using EntityID = uint32_t;
 
 template <typename IComponent>
 class Entity {
 	EntityID id;
-	std::array<IComponent*, MAX_COMPONENTS> components;
+	std::array<std::shared_ptr<IComponent>, MAX_COMPONENTS> components;
 	public:
 		Entity(EntityID id);
-		void addComponent(IComponent* comp);
+		void addComponent(std::shared_ptr<IComponent> comp);
 		void removeComponent(IComponent* comp);
 		void removeComponent(ComponentType type);
 		EntityID getId();

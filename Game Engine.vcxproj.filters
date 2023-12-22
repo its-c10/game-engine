@@ -21,16 +21,16 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game_object\game_object.cpp">
+    <ClCompile Include="src\fps_tracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\component\location.hpp">
+    <ClCompile Include="src\fps_tracker.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ecs\entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\component\location.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\component\component.cpp">
+    <ClCompile Include="src\ecs\ecs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,7 +38,10 @@
     <ClInclude Include="src\tengine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\game_object\game_object.hpp">
+    <ClInclude Include="src\ecs\entity.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ecs\component\i_component.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,6 +5,7 @@
 #include "./entity.hpp";
 #include <queue>
 #include <unordered_map>
+#include <memory>
 
 class ECSManager {
 	std::vector<Entity<IComponent>> entities;

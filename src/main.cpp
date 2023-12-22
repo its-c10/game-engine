@@ -7,9 +7,9 @@
 int main(int argc, char *args[]){
 
 	Tengine tengine = Tengine();
-	while (tengine.is_running()) {
+	while (tengine.isRunning()) {
 		tengine.getFPSTracker().handle_frames();
-		tengine.process_input();
+		tengine.processInput();
 		tengine.update();
 		tengine.render();
 	}

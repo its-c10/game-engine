@@ -1,5 +1,4 @@
 #include "./ecs.hpp"
-#include "../constants.h"
 #include <memory>
 
 ECSManager::ECSManager() {
