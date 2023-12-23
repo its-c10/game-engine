@@ -152,6 +152,7 @@
     <ClInclude Include="src\ecs\ecs.hpp" />
     <ClInclude Include="src\ecs\entity.hpp" />
     <ClInclude Include="src\ecs\system\render_system.hpp" />
+    <ClInclude Include="src\ecs\system\system.hpp" />
     <ClInclude Include="src\math\vec2.hpp" />
     <ClInclude Include="src\tengine.hpp" />
   </ItemGroup>

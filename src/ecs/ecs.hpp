@@ -11,6 +11,7 @@ using EntitySPtr = std::shared_ptr<Entity<IComponent>>;
 class ECSManager {
 	std::vector<EntitySPtr> entities;
 	std::queue<EntityID> availableIDs;
+	std::array<SystemPtr, 10> systems;
 	public:
 		ECSManager();
 		EntitySPtr createEntity();
