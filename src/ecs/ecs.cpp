@@ -7,6 +7,11 @@ void ECSManager::populateIdQueue() {
 	}
 }
 
+void ECSManager::initSystems()
+{
+	/*systems.push_back(std::make_unique<RenderSystem>());*/
+}
+
 EntityID ECSManager::getEntityId() {
 	int id = this->availableIDs.front();
 	this->availableIDs.pop();
@@ -31,5 +36,10 @@ void ECSManager::destroyEntity(EntityID id)
 
 void ECSManager::tickSystems()
 {
-	
+	/*for (int i = 0; i < systems.size(); i++) {
+		if (systems[i] == NULL) {
+			continue;
+		}
+		systems[i]->tick(entities);
+	}*/
 }

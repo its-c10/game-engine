@@ -21,7 +21,6 @@ std::shared_ptr<IComponent> Entity<IComponent>::getComponent(ComponentType type)
 	return this->components[type];
 }
 
-template<typename IComponent>
 bool Entity<IComponent>::hasComponent(ComponentType type)
 {
 	return this->components[type] != NULL;

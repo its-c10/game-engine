@@ -8,17 +8,29 @@
 #include <memory>
 
 using EntitySPtr = std::shared_ptr<Entity<IComponent>>;
-class ECSManager {
-	std::vector<EntitySPtr> entities;
-	std::queue<EntityID> availableIDs;
-	std::array<SystemPtr, 10> systems;
+class System {
 	public:
-		ECSManager();
-		EntitySPtr createEntity();
-		void destroyEntity(EntityID id);
-		void tickSystems();
-	private:
-		EntityID getEntityId();
-		void populateIdQueue();
+		virtual void tick(std::vector<EntitySPtr> entities) { return; };
+};
+using SystemPtr = std::unique_ptr<System>;
+
+class RenderSystem : public System {
+	public:
+		void tick(std::vector<EntitySPtr> entities) override;
 };
 
+class ECSManager {
+	
+public:
+	ECSManager();
+	EntitySPtr createEntity();
+	void destroyEntity(EntityID id);
+	void tickSystems();
+private:
+	std::vector<EntitySPtr> entities;
+	std::queue<EntityID> availableIDs;
+	std::vector<SystemPtr> systems = { NULL };
+	EntityID getEntityId();
+	void populateIdQueue();
+	void initSystems();
+};

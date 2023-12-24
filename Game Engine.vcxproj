@@ -138,7 +138,6 @@
     <ClCompile Include="src\ecs\component\transform.hpp" />
     <ClCompile Include="src\ecs\ecs.cpp" />
     <ClCompile Include="src\ecs\entity.cpp" />
-    <ClCompile Include="src\ecs\system\render_system.cpp" />
     <ClCompile Include="src\fps_tracker.cpp" />
     <ClCompile Include="src\fps_tracker.hpp" />
     <ClCompile Include="src\main.cpp" />
@@ -151,8 +150,6 @@
     <ClInclude Include="src\ecs\component\sprite.hpp" />
     <ClInclude Include="src\ecs\ecs.hpp" />
     <ClInclude Include="src\ecs\entity.hpp" />
-    <ClInclude Include="src\ecs\system\render_system.hpp" />
-    <ClInclude Include="src\ecs\system\system.hpp" />
     <ClInclude Include="src\math\vec2.hpp" />
     <ClInclude Include="src\tengine.hpp" />
   </ItemGroup>
