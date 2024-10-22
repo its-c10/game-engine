@@ -18,6 +18,6 @@ class Tengine {
 		bool isRunning();
 		SDL_Window* getWindow();
 		SDL_Renderer* getRenderer();
-		FPS_Tracker getFPSTracker();
+		FPS_Tracker* getFPSTracker();
 		Tengine();
 };

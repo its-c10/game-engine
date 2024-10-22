@@ -7,7 +7,7 @@
 
 float y, x;
 
-FPS_Tracker Tengine::getFPSTracker() { return fpsTracker; };
+FPS_Tracker* Tengine::getFPSTracker() { return &fpsTracker; };
 
 bool Tengine::isRunning() { return running; }
 
@@ -51,7 +51,7 @@ void Tengine::setup() {
 Tengine::Tengine() {
 
 	setup();
-	lastTime = SDL_GetTicks64();
+	this->lastTime = SDL_GetTicks64();
 	fpsTracker = FPS_Tracker();
 	ecsManager = std::make_unique<ECSManager>();
 	x = 100;
@@ -86,6 +86,7 @@ void Tengine::update() {
 }
 
 void Tengine::render() {
+	
 	SDL_RenderClear(renderer); // Clear render context
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // Background window color
 	/* RENDER BELOW */

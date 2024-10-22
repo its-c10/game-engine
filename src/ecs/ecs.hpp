@@ -29,7 +29,7 @@ public:
 private:
 	std::vector<EntitySPtr> entities;
 	std::queue<EntityID> availableIDs;
-	std::vector<SystemPtr> systems = { NULL };
+	//std::vector<SystemPtr> systems = { NULL };
 	EntityID getEntityId();
 	void populateIdQueue();
 	void initSystems();

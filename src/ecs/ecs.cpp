@@ -3,7 +3,7 @@
 
 void ECSManager::populateIdQueue() {
 	for (int i = 0; i < MAX_ENTITIES; ++i) {
-		this->availableIDs.push(i);
+		availableIDs.push(i);
 	}
 }
 
@@ -13,8 +13,8 @@ void ECSManager::initSystems()
 }
 
 EntityID ECSManager::getEntityId() {
-	int id = this->availableIDs.front();
-	this->availableIDs.pop();
+	int id = availableIDs.front();
+	availableIDs.pop();
 	return id;
 }
 
@@ -24,7 +24,7 @@ ECSManager::ECSManager()
 }
 
 EntitySPtr ECSManager::createEntity() {
-	EntityID id = this->getEntityId();
+	EntityID id = getEntityId();
 	EntitySPtr entity = std::make_shared<Entity<IComponent>>(id);
 	entities.push_back(entity);
 	return entity;
