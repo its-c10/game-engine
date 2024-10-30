@@ -1,9 +1,9 @@
-class FPS_Tracker {
+class FPSTracker {
 private:
-	int last_fps;
-	int fps;
-	double last_time_stamp;
+	int lastFps = -1;
+	int fps = 0;
+	double lastTimeStamp;
 public:
-	FPS_Tracker();
-	void handle_frames();
+	FPSTracker();
+	void handleFrames();
 };

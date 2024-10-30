@@ -4,7 +4,7 @@ Entity<IComponent>::Entity(EntityID id) {
 	this->id = id;
 }
 
-void Entity<IComponent>::addComponent(std::shared_ptr<IComponent> comp) {
+void Entity<IComponent>::addComponent(std::unique_ptr<IComponent> comp) {
 	this->components[comp->type()] = comp;
 }
 

@@ -25,7 +25,7 @@ ECSManager::ECSManager()
 
 EntitySPtr ECSManager::createEntity() {
 	EntityID id = getEntityId();
-	EntitySPtr entity = std::make_shared<Entity<IComponent>>(id);
+	EntitySPtr entity = std::make_unique<Entity<IComponent>>(id);
 	entities.push_back(entity);
 	return entity;
 }

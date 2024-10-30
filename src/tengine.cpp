@@ -1,13 +1,15 @@
 #include <iostream>
 #include "tengine.hpp"
 #include "constants.h"
-#include <SDL.h>
+#include "../sdl/include/SDL.h"
 #include <chrono>
-#include "./ecs/component/transform.hpp";
+// #include "ecs/ecs.hpp"
+// #include "./ecs/component/transform.hpp"
+// #include "./math/vec2.hpp"
 
 float y, x;
 
-FPS_Tracker* Tengine::getFPSTracker() { return &fpsTracker; };
+FPSTracker& Tengine::getFPSTracker() { return fpsTracker; };
 
 bool Tengine::isRunning() { return running; }
 
@@ -52,16 +54,16 @@ Tengine::Tengine() {
 
 	setup();
 	this->lastTime = SDL_GetTicks64();
-	fpsTracker = FPS_Tracker();
-	ecsManager = std::make_unique<ECSManager>();
-	x = 100;
-	y = 100;
-
-	std::shared_ptr<Entity<IComponent>> entity = ecsManager->createEntity();
-	std::shared_ptr<Transform> transform = std::make_shared<Transform>();
-	Vec2 vec = Vec2(10, 10);
-	transform->position = vec;
-	entity->addComponent(transform);
+	fpsTracker = FPSTracker();
+	// ecsManager = std::make_unique<ECSManager>();
+	// x = 100;
+	// y = 100;
+	//
+	// std::unique_ptr<Entity<IComponent>> entity = ecsManager->createEntity();
+	// std::unique_ptr<Transform> transform = std::make_unique<Transform>();
+	// Vec2 vec = Vec2(10, 10);
+	// transform->position = vec;
+	// entity->addComponent(&transform);
 	
 }
 
@@ -81,7 +83,7 @@ void Tengine::update() {
 	//std::cout << "y: " << y << "\n";
 	//std::cout << "x: " << x << "\n";
 	lastTime = SDL_GetTicks64(); // time in ms
-	ecsManager->tickSystems();
+	// ecsManager->tickSystems();
 
 }
 

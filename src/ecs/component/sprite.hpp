@@ -1,5 +1,5 @@
 #include "./i_component.hpp";
-#include <SDL_render.h>
+#include "../../../sdl/include/SDL.h""
 struct Sprite : IComponent {
 	SDL_Rect src;
 	SDL_Rect dst;

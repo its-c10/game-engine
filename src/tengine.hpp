@@ -1,8 +1,8 @@
-#include <SDL.h>
+#include "../sdl/include/SDL.h"
 #include "fps_tracker.hpp";
 #include "./ecs/ecs.hpp";
 class Tengine {
-	FPS_Tracker fpsTracker;
+	FPSTracker fpsTracker;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	std::unique_ptr<ECSManager> ecsManager;
@@ -18,6 +18,6 @@ class Tengine {
 		bool isRunning();
 		SDL_Window* getWindow();
 		SDL_Renderer* getRenderer();
-		FPS_Tracker* getFPSTracker();
+		FPSTracker& getFPSTracker();
 		Tengine();
 };

@@ -12,10 +12,10 @@ class Entity {
 	std::array<std::shared_ptr<IComponent>, MAX_COMPONENTS> components = { NULL };
 	public:
 		Entity(EntityID id);
-		void addComponent(std::shared_ptr<IComponent> comp);
+		void addComponent(std::unique_ptr<IComponent>& comp);
 		void removeComponent(IComponent* comp);
 		void removeComponent(ComponentType type);
-		std::shared_ptr<IComponent> getComponent(ComponentType type);
+		std::unique_ptr<IComponent> getComponent(ComponentType type);
 		bool hasComponent(ComponentType type);
 		EntityID getId();
 };

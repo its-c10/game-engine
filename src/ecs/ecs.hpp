@@ -1,13 +1,11 @@
-#include <bitset>
-#include "../constants.h";
-#include "./component/transform.hpp";
-#include "./component/sprite.hpp";
-#include "./entity.hpp";
+#include "../constants.h"
+#include "./component/transform.hpp"
+#include "./component/sprite.hpp"
+#include "./entity.hpp"
 #include <queue>
-#include <unordered_map>
 #include <memory>
 
-using EntitySPtr = std::shared_ptr<Entity<IComponent>>;
+using EntitySPtr = std::unique_ptr<Entity<IComponent>>;
 class System {
 	public:
 		virtual void tick(std::vector<EntitySPtr> entities) { return; };
